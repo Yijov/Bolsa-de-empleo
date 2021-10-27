@@ -1,0 +1,27 @@
+
+//auth
+
+POST   http://localhost:3001/api/v1/auth/signin
+content-Type: application/json
+
+{
+"email":"yirbett@gmail.com", 
+"password":"Nomelace1"
+}
+###
+POST  http://localhost:3001/api/v1/auth/signup
+content-Type: application/json
+
+{
+"name": "Yirbett", "lastName":"Joseph", "email":"yirbett@gmail.com", "password":"Nomelace1"
+}
+
+###
+GET   http://localhost:3001/api/v1/auth/signout
+
+
+
+//puestos
+
+###
+GET   http://localhost:3001/api/v1/puestos/
