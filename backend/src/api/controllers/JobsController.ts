@@ -1,36 +1,29 @@
 import { Router, NextFunction, Request, Response } from "express";
+import JobService from "../services/JobService";
 
 class JobsController {
   private router: Router = Router();
   constructor() {
-    this.router.get("/", this.getJobs);
-    this.router.post("/:id", this.postJob);
-    this.router.put("/;id", this.updateJob);
-    this.router.delete("/:id", this.deleteJob);
+    this.router.get("/", this.getJobs, JobService.getJobs);
+    this.router.post("/", this.postJob, JobService.postJobs);
+    this.router.put("/;id", this.updateJob, JobService.updateJob);
+    this.router.delete("/:id", this.deleteJob, JobService.deleteJob);
   }
   public get Router() {
     return this.router;
   }
 
-  async getJobs(req: Request, res: Response, next: NextFunction): Promise<{}> {
-    throw new Error("Method not implemented.");
+  async getJobs(req: Request, res: Response, next: NextFunction) {
+    next();
   }
-  async postJob(req: Request, res: Response, next: NextFunction): Promise<{}> {
-    throw new Error("Method not implemented.");
+  async postJob(req: Request, res: Response, next: NextFunction) {
+    next();
   }
-  async updateJob(
-    req: Request,
-    res: Response,
-    next: NextFunction
-  ): Promise<{}> {
-    throw new Error("Method not implemented.");
+  async updateJob(req: Request, res: Response, next: NextFunction) {
+    next();
   }
-  async deleteJob(
-    req: Request,
-    res: Response,
-    next: NextFunction
-  ): Promise<{}> {
-    throw new Error("Method not implemented.");
+  async deleteJob(req: Request, res: Response, next: NextFunction) {
+    next();
   }
 }
 

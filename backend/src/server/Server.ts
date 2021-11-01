@@ -4,6 +4,7 @@ import Express from "express";
 import morgan from "morgan";
 import cors from "cors";
 import helmet from "helmet";
+import cookieParser from "cookie-parser";
 import router from "../api/router/Router";
 import DBConnection from "../DBConnection/DBConnection";
 
@@ -28,6 +29,7 @@ export default class AppServer {
     this.app.use(Express.json());
     this.app.use(Express.urlencoded({ extended: true }));
     this.app.use(cors({ origin: "http://localhost:3000", credentials: true }));
+    this.app.use(cookieParser());
     this.app.use(helmet());
     this.app.use(morgan("dev"));
     this.app.use("/api/v1", router);

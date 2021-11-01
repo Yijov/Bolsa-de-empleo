@@ -13,10 +13,14 @@ class AuthValidator {
 
   public isAuth = async (req: Request, res: Response, next: NextFunction) => {
     //verify if the token exists
+    console.log(req);
     const token = req?.cookies?.AuthToken;
 
-    if (!token)
+    if (!token) {
+      console.log("error");
+
       return res.status(401).json({ success: false, error: "Access Denied" });
+    }
 
     try {
       //validate the token

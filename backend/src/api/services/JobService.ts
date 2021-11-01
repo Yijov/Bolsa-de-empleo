@@ -22,7 +22,14 @@ class JobService {
       };
       let newJob = await new JobModel(jobBody);
       let addedJob = await newJob.save();
-      res.status(200).json({ Message: "Job Created", job: addedJob });
+      res
+        .status(200)
+        .json({
+          success: true,
+          message: "Job Created",
+          error: "",
+          job: addedJob,
+        });
     } catch (error) {
       next(error);
     }
