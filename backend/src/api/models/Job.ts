@@ -1,10 +1,11 @@
+import { string } from "joi";
 import { Schema, model, Model } from "mongoose";
 
 import { IJob } from "../interfaces";
 
 const JobSchema: Schema = new Schema<IJob>(
   {
-    ownerId: String, // user id
+    ownerId: String, // id of the user who posted
     company: String,
     type: String,
     logo: String,
@@ -15,6 +16,7 @@ const JobSchema: Schema = new Schema<IJob>(
     description: String,
     email: String,
     howToApply: String,
+    applicants: [String],
   },
   { timestamps: true }
 );

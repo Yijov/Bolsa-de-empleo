@@ -5,4 +5,10 @@ export default interface IUser {
   lastName: string;
   email: string;
   password: string;
+  profesion: string;
+  location: string;
+  phone: string;
+  lastExperience: string;
+  skills: string[];
+  studies: string;
 }

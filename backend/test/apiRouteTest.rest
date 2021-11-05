@@ -24,4 +24,23 @@ GET   http://localhost:3001/api/v1/auth/signout
 //puestos
 
 ###
-GET   http://localhost:3001/api/v1/puestos/
+GET   http://localhost:3001/api/v1/puestos
+
+
+//profile
+
+###
+GET   http://localhost:3001/api/v1/profile/
+Cookie: AuthToken=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjYxNzgyYjdmZDkwMGJkY2M5ZmYxYzQ4ZSIsImlhdCI6MTYzNTg2MTU4OCwiZXhwIjoxNjM1OTQ3OTg4fQ.RGa7lYZaeImSguuzoy950xkeQ5IucMP3qI_qg_5PgQo
+
+
+###
+PUT    http://localhost:3001/api/v1/profile/
+content-Type: application/json
+Cookie: AuthToken=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjYxNzgyYjdmZDkwMGJkY2M5ZmYxYzQ4ZSIsImlhdCI6MTYzNTg2MTU4OCwiZXhwIjoxNjM1OTQ3OTg4fQ.RGa7lYZaeImSguuzoy950xkeQ5IucMP3qI_qg_5PgQo
+
+{
+"name": "Yirbett",
+"skills": ["Software Development", "TypeScript", "JAVA"],
+"phone":"8296190000"
+}

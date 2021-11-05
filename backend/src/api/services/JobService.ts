@@ -2,16 +2,27 @@ const dotenv = require("dotenv");
 dotenv.config();
 import { NextFunction, Request, Response } from "express";
 import { JobModel } from "../models";
+import mongooseJobObjecStructure from "../../config/constants/mongooseJobAggregateStructure";
 class JobService {
   constructor() {}
 
   public async getJobs(req: Request, res: Response, next: NextFunction) {
-    try {
-      let jobs = await JobModel.find();
-      res.status(200).json({ jobs });
-    } catch (error) {
-      next(error);
-    }
+    let jobs = await JobModel.aggregate([
+      {
+        $group: {
+          _id: "$category",
+          collection: {
+            $push: mongooseJobObjecStructure,
+          },
+        },
+      },
+    ]);
+    res.status(200).json({
+      success: true,
+      message: "",
+      error: "",
+      jobs: jobs,
+    });
   }
 
   public async postJobs(req: Request, res: Response, next: NextFunction) {
@@ -22,14 +33,12 @@ class JobService {
       };
       let newJob = await new JobModel(jobBody);
       let addedJob = await newJob.save();
-      res
-        .status(200)
-        .json({
-          success: true,
-          message: "Job Created",
-          error: "",
-          job: addedJob,
-        });
+      res.status(200).json({
+        success: true,
+        message: "Job Created",
+        error: "",
+        job: addedJob,
+      });
     } catch (error) {
       next(error);
     }

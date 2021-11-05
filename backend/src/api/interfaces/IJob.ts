@@ -11,4 +11,5 @@ export default interface IJob {
   description: string;
   email: string;
   howToApply: string;
+  applicants: [string];
 }
