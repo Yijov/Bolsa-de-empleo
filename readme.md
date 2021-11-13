@@ -1,0 +1,5 @@
+![Customers page](./cliente/dir/images/Captura1.PNG "Customers Page")
+![Customers page](./cliente/dir/images/Captura2.PNG "Customers Page")
+![Customers page](./cliente/dir/images/Captura3.PNG "Customers Page")
+![Customers page](./cliente/dir/images/Captura4.PNG "Customers Page")
+![Customers page](./cliente/dir/images/Captura5.PNG "Customers Page")
