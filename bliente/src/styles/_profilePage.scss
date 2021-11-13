@@ -1,0 +1,108 @@
+#profile-page {
+  display: flex;
+  border: 1px solid black;
+  height: 80vh;
+  width: 70%;
+  margin: auto;
+  margin-bottom: 1rem;
+  font-family: Helvetica, sans-serif;
+  #profile-info-container {
+    height: 100%;
+    width: 30%;
+    background-color: $ColorMain;
+    color: white;
+
+    #profile-picture {
+      width: 100%;
+      height: 30%;
+      padding: 0.4rem;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      color: white;
+      .icon {
+        height: 100%;
+        width: 45%;
+        color: white;
+        cursor: pointer;
+      }
+      #profile-name {
+        font-size: 1.2rem;
+        width: 50%;
+        cursor: pointer;
+        p {
+          display: inline-block;
+          justify-content: space-between;
+        }
+      }
+      #profile-profesion {
+        font-size: 0.9rem;
+        width: 50%;
+        cursor: pointer;
+      }
+    }
+
+    #profile-info {
+      color: white;
+      height: 100%;
+      max-height: 22rem;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-around;
+      padding: 1rem;
+      overflow: auto;
+
+      p {
+        cursor: pointer;
+      }
+    }
+  }
+  #positions-container {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    height: 100%;
+    width: 70%;
+    background-color: $ColorMain;
+    padding: 1rem;
+    color: white;
+
+    #positions-applyed,
+    #positions-posted {
+      box-shadow: $BoxShadow;
+      background-color: whitesmoke;
+      height: 100%;
+      color: black;
+      table {
+        font-family: arial, sans-serif;
+        border-collapse: collapse;
+        width: 100%;
+        margin-bottom: 4rem;
+        caption {
+          background-color: $ColorMain;
+          height: 3rem;
+          text-align: center;
+          margin: auto;
+          padding-top: 1rem;
+          color: white;
+        }
+        td,
+        th {
+          border: 1px solid #dddddd;
+          text-align: left;
+          padding: 8px;
+          height: 30px;
+          width: 50px;
+          text-align: center;
+          vertical-align: middle;
+        }
+        tr {
+          cursor: pointer;
+        }
+        tr:nth-child(even) {
+          background-color: #dddddd;
+        }
+      }
+    }
+  }
+}

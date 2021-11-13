@@ -1,0 +1,43 @@
+#post-job_form {
+  position: absolute;
+  top: 12%;
+  left: 0;
+  right: 0;
+  margin-left: auto;
+  margin-right: auto;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  height: 33rem;
+  width: 18rem;
+  margin: auto;
+  margin-bottom: 2rem;
+  border: 2px solid lightgray;
+  border-radius: 6px;
+  padding: 1rem;
+  box-shadow: $BoxShadow;
+  background-color: white;
+  h3 {
+    align-self: center;
+    font-family: Helvetica, sans-serif;
+    color: black;
+  }
+  #post-form-close_button {
+    font-size: 1rem;
+    align-self: flex-end;
+    margin-right: 0.8rem;
+    color: black;
+    cursor: pointer;
+  }
+
+  input {
+    border: none;
+    outline: none;
+    border-bottom: 1px solid gray;
+    padding: 8px;
+  }
+  input[type="submit"] {
+    @include greenButton;
+    margin-bottom: 2rem;
+  }
+}

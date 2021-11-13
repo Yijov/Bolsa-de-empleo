@@ -1,0 +1,26 @@
+#job-details-pannel {
+  position: absolute;
+  top: 20%;
+  left: 40%;
+  height: 70%;
+  width: 17rem;
+  padding: 1.5rem;
+  border-radius: 5px;
+  display: flex;
+  flex-direction: column;
+  background-color: white;
+  color: $ColorMid;
+  box-shadow: $BoxShadow;
+  .close-button {
+    font-size: 1.4rem;
+    align-self: flex-end;
+    margin-right: 0.5rem;
+    cursor: pointer;
+  }
+  #job-data-container {
+    margin-top: 2rem;
+    .job-data {
+      margin-top: 0.6rem;
+    }
+  }
+}

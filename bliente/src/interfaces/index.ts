@@ -1,0 +1,9 @@
+export type { default as IUser } from "./IUser";
+export type { default as IJobPost } from "./IJobPost";
+export type { default as ICategory } from "./ICategory";
+export type { default as IAPIResponse } from "./IAPIResponse";
+export type { default as IAuthInput } from "./IAuthInput";
+export type { default as IState } from "./IState";
+export type { default as ICustomRoute } from "./ICustomRoute";
+export type { default as IProfile } from "./IProfile";
+export type { default as IClasifyedJobs } from "./IClasifyedJobs";

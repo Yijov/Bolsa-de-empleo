@@ -1,0 +1,49 @@
+#acction-bar {
+  padding: 1rem;
+  width: 70%;
+  height: 4rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin: auto;
+  background-color: $ColorMain;
+  margin-bottom: 2rem;
+  box-shadow: $BoxShadow;
+
+  .AppLogo {
+    color: white;
+    display: flex;
+    align-items: center;
+    justify-content: space-evenly;
+    width: 12rem;
+    margin-left: 1rem;
+    font-family: "Helvetica Neue", sans-serif;
+    font-size: 1.1rem;
+    cursor: Pointer;
+    &-icon {
+      box-shadow: $BoxShadow;
+      background-color: white;
+      font-size: 2.7rem;
+      border-radius: 5px;
+      padding: 5px;
+    }
+  }
+  #buttons-searchbar-container {
+    form {
+      #search-bar {
+        width: 15rem;
+        border: 1px solid lightgray;
+        outline: none;
+        padding: 0.3rem;
+      }
+      .search-submit {
+        background-color: #3385ff;
+        color: white;
+        border: 1px solid lightgray;
+        padding: 0.3rem;
+        width: 2rem;
+        cursor: pointer;
+      }
+    }
+  }
+}

@@ -1,0 +1,76 @@
+#home-page {
+  width: 90%;
+  height: 100vh;
+  margin: auto;
+  #positions-list-container {
+    width: 70%;
+    min-width: 22rem;
+    margin: auto;
+    margin-top: 2rem;
+    overflow: auto;
+    height: 32rem;
+    border: 2px solid #dddddd;
+    padding: 1rem;
+    table {
+      font-family: arial, sans-serif;
+      border-collapse: collapse;
+      width: 100%;
+      margin-bottom: 4rem;
+      .apply_button {
+        @include BlueButton;
+        @include MidSizeButton;
+      }
+      .applied_icon {
+        @include greenButton;
+        @include MidSizeButton;
+      }
+
+      .details_button {
+        @include BlueButton;
+        @include microButton;
+      }
+
+      caption {
+        background-color: $ColorMain;
+        height: 3rem;
+        text-align: center;
+        margin: auto;
+        padding-top: 1rem;
+        color: white;
+      }
+
+      td,
+      th {
+        border: 1px solid #dddddd;
+        text-align: left;
+        padding: 8px;
+        height: 50px;
+        width: 50px;
+        text-align: center;
+        vertical-align: middle;
+      }
+      tr:nth-child(even) {
+        background-color: #dddddd;
+      }
+    }
+  }
+}
+//scroll bar style
+::-webkit-scrollbar {
+  width: 2px;
+}
+
+/* Track */
+::-webkit-scrollbar-track {
+  background: #f1f1f1;
+}
+
+/* Handle */
+::-webkit-scrollbar-thumb {
+  background: #888;
+}
+
+/* Handle on hover */
+::-webkit-scrollbar-thumb:hover {
+  background: #555;
+}
