@@ -12,5 +12,7 @@ const mongooseJobObjecStructure = {
   email: "$email",
   howToApply: "$howToApply",
   applicants: "$applicants",
+  createdAt: "$createdAt",
+  updatedAt: "$updatedAt",
 };
 export default mongooseJobObjecStructure;

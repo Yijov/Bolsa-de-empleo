@@ -1,3 +1,4 @@
+import { IJob } from ".";
 export default interface IUser {
   _id: string;
   accessLevel: string; // andmin, poster, user
@@ -11,4 +12,5 @@ export default interface IUser {
   lastExperience: string;
   skills: string[];
   studies: string;
+  AppliedJobs: IJob[];
 }

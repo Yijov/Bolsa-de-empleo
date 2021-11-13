@@ -1,5 +1,5 @@
 import { Router, NextFunction, Request, Response } from "express";
-import UserProfileServie from "../services/userProfileServie";
+import UserProfileServie from "../services/UserProfileServie";
 
 class UserProfileController {
   private router: Router = Router();

@@ -9,7 +9,7 @@ import { AuthValidator } from "../validations";
 const MainRouter = Router();
 
 MainRouter.use("/auth", AuthController.Router);
-MainRouter.use("/puestos", AuthValidator.isAuth, JobsController.Router);
+MainRouter.use("/puestos", JobsController.Router);
 MainRouter.use("/profile", AuthValidator.isAuth, ProfileController.Router);
 
 export default MainRouter;

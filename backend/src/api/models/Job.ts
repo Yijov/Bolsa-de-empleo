@@ -12,6 +12,10 @@ const JobSchema: Schema = new Schema<IJob>(
     URL: String,
     position: String,
     location: String,
+    status: {
+      type: String,
+      default: "active",
+    },
     category: String,
     description: String,
     email: String,

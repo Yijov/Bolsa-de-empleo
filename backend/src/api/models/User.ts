@@ -1,6 +1,7 @@
 import { Schema, model, Model } from "mongoose";
 
 import { IUser } from "../interfaces";
+import { JobModel } from ".";
 
 const UserSchema: Schema = new Schema<IUser>(
   {
@@ -71,6 +72,10 @@ const UserSchema: Schema = new Schema<IUser>(
       trim: true,
       required: false,
       default: "-",
+    },
+    AppliedJobs: {
+      type: [JobModel],
+      default: [],
     },
   },
   { timestamps: true }

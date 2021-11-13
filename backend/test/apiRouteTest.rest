@@ -31,16 +31,58 @@ GET   http://localhost:3001/api/v1/puestos
 
 ###
 GET   http://localhost:3001/api/v1/profile/
-Cookie: AuthToken=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjYxNzgyYjdmZDkwMGJkY2M5ZmYxYzQ4ZSIsImlhdCI6MTYzNTg2MTU4OCwiZXhwIjoxNjM1OTQ3OTg4fQ.RGa7lYZaeImSguuzoy950xkeQ5IucMP3qI_qg_5PgQo
+Cookie: AuthToken=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjYxNzgyYjdmZDkwMGJkY2M5ZmYxYzQ4ZSIsImlhdCI6MTYzNjc1NDEzMCwiZXhwIjoxNjM2ODQwNTMwfQ.l7EgG7wbroxgVfgKfKk-9oWQbaIhvSxixXcbJzRkc28
 
 
 ###
 PUT    http://localhost:3001/api/v1/profile/
 content-Type: application/json
-Cookie: AuthToken=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjYxNzgyYjdmZDkwMGJkY2M5ZmYxYzQ4ZSIsImlhdCI6MTYzNTg2MTU4OCwiZXhwIjoxNjM1OTQ3OTg4fQ.RGa7lYZaeImSguuzoy950xkeQ5IucMP3qI_qg_5PgQo
+Cookie: AuthToken=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjYxNzgyYjdmZDkwMGJkY2M5ZmYxYzQ4ZSIsImlhdCI6MTYzNjc1NDEzMCwiZXhwIjoxNjM2ODQwNTMwfQ.l7EgG7wbroxgVfgKfKk-9oWQbaIhvSxixXcbJzRkc28
 
 {
-"name": "Yirbett",
-"skills": ["Software Development", "TypeScript", "JAVA"],
-"phone":"8296190000"
+
+"AppliedJobs":[  {
+          "_id": "618adb8e4fba018b73e103e3",
+          "company": "HTC",
+          "type": "part_time",
+          "logo": "",
+          "URL": "someurl.com",
+          "position": "Medico Internista",
+          "location": "Santo_Domingo",
+          "category": "medicina",
+          "description": "Encargado del departamento de diagnosticos",
+          "email": "test@email.com",
+          "howToApply": "Llenar forma en nuestra pagina web someurl.com",
+          "applicants": [],
+          "createdAt": "2021-11-09T20:35:26.895Z",
+          "updatedAt": "2021-11-09T20:35:26.895Z"
+        }]
+}
+
+
+//appy to a job
+###
+
+PUT    http://localhost:3001/api/v1/puestos/apply/618adb8e4fba018b73e103e3
+content-Type: application/json
+Cookie: AuthToken=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjYxNzgyYjdmZDkwMGJkY2M5ZmYxYzQ4ZSIsImlhdCI6MTYzNjc1NDEzMCwiZXhwIjoxNjM2ODQwNTMwfQ.l7EgG7wbroxgVfgKfKk-9oWQbaIhvSxixXcbJzRkc28
+
+{
+
+"AppliedJobs":[  {
+          "_id": "618adb8e4fba018b73e103e3",
+          "company": "HTC",
+          "type": "part_time",
+          "logo": "",
+          "URL": "someurl.com",
+          "position": "Medico Internista",
+          "location": "Santo_Domingo",
+          "category": "medicina",
+          "description": "Encargado del departamento de diagnosticos",
+          "email": "test@email.com",
+          "howToApply": "Llenar forma en nuestra pagina web someurl.com",
+          "applicants": [],
+          "createdAt": "2021-11-09T20:35:26.895Z",
+          "updatedAt": "2021-11-09T20:35:26.895Z"
+        }]
 }

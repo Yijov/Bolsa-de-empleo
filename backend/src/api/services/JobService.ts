@@ -1,8 +1,10 @@
 const dotenv = require("dotenv");
 dotenv.config();
 import { NextFunction, Request, Response } from "express";
-import { JobModel } from "../models";
+import { JobModel, UserModel } from "../models";
 import mongooseJobObjecStructure from "../../config/constants/mongooseJobAggregateStructure";
+import alfabethicSort from "../../helpers/AlphebeticSortFunction";
+
 class JobService {
   constructor() {}
 
@@ -11,6 +13,7 @@ class JobService {
       {
         $group: {
           _id: "$category",
+
           collection: {
             $push: mongooseJobObjecStructure,
           },
@@ -21,7 +24,7 @@ class JobService {
       success: true,
       message: "",
       error: "",
-      jobs: jobs,
+      jobs: jobs.sort((a, b) => alfabethicSort(a, b, "_id")), //sort them the name of the category
     });
   }
 
@@ -29,7 +32,7 @@ class JobService {
     try {
       let jobBody: {} = {
         ...req.body,
-        user: req.body.validatedUser.id,
+        ownerId: req.body.validatedUser.id,
       };
       let newJob = await new JobModel(jobBody);
       let addedJob = await newJob.save();
@@ -51,6 +54,35 @@ class JobService {
     try {
       let result = await JobModel.findOneAndUpdate(id, change, options).exec();
       res.status(200).json({ Message: "job Updated", job: result });
+    } catch (err) {
+      next(err);
+    }
+  }
+
+  public async applyToJob(req: Request, res: Response, next: NextFunction) {
+    let options = { upsert: true, new: true };
+    try {
+      //add job to the list of jobs applied to in the  user profile
+      let userId = { _id: req.body.validatedUser.id };
+      let userProfilechange = { $push: { AppliedJobs: req.body } };
+      let updateduserProfile = await UserModel.findOneAndUpdate(
+        userId,
+        userProfilechange,
+        options
+      ).exec();
+
+      //add user profile to the list og users that applyed to the  job in the job document
+      let JobChange = { $push: { applicants: updateduserProfile?.id } };
+      let jobId = { _id: req.params.id };
+      await JobModel.findOneAndUpdate(jobId, JobChange, options).exec();
+
+      //sent succesfull response to theuser
+      res.status(200).json({
+        success: true,
+        error: "",
+        message: "Your application has been submited",
+        profile: updateduserProfile,
+      });
     } catch (err) {
       next(err);
     }

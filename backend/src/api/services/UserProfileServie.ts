@@ -1,18 +1,26 @@
 const dotenv = require("dotenv");
 dotenv.config();
 import { NextFunction, Request, Response } from "express";
-import { UserModel } from "../models";
+import { UserModel, JobModel } from "../models";
 class UserProfileServie {
   constructor() {}
 
   public async getProfile(req: Request, res: Response, next: NextFunction) {
     try {
-      let result = await UserModel.find({ _id: req.body.validatedUser.id });
+      const result = await UserModel.find({ _id: req.body.validatedUser.id });
+      const PostedJobs = await JobModel.find({
+        ownerId: req.body.validatedUser.id,
+      });
+      const AppliedJobs = await JobModel.find({
+        ownerId: req.body.validatedUser.id,
+      });
+
       res.status(200).json({
         success: true,
         error: "",
         message: "",
         profile: result[0],
+        PostedJobs,
       });
     } catch (error) {
       next(error);

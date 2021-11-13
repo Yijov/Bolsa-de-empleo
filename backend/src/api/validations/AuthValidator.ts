@@ -16,7 +16,7 @@ class AuthValidator {
     const token = req?.cookies?.AuthToken;
 
     if (!token) {
-      return res.status(401).json({ success: false, error: "Access Denied" });
+      return res.status(401).json({ success: false, error: "Please sing in" });
     }
 
     try {
