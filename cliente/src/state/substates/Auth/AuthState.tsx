@@ -8,7 +8,7 @@ const Database = AuthController;
 
 export default function AuthState() {
   // autho state
-  const [Auth, setAuth] = useState(true);
+  const [Auth, setAuth] = useState(false);
 
   const [AuthError, setAuthError] = useState("");
 

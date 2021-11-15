@@ -1,4 +1,4 @@
-import React, { useContext, useEffect } from "react";
+import React, { useContext } from "react";
 import { State } from "../../state/State";
 import {
   BsFileEarmarkArrowUpFill,
@@ -6,12 +6,12 @@ import {
   BsFillCheckCircleFill,
 } from "react-icons/bs";
 import { IJobPost } from "../../interfaces";
-import { TransformableButtuon, CustomButton } from "..";
+import { Transformablebutton, CustomButton } from "..";
 
 const JobRow: React.FC<{
   job: IJobPost;
 }> = ({ job }) => {
-  const { DISPLAY_PANNEL_API, PROFILE_API, PROFILE_STATE, AUTH_STATE } =
+  const { DISPLAY_PANNEL_API, PROFILE_API, AUTH_STATE, PROFILE_STATE } =
     useContext(State);
 
   const openDisplayForm = () => {
@@ -20,15 +20,6 @@ const JobRow: React.FC<{
   const applyToPossition = async () => {
     PROFILE_API.AppyToPossition(job);
   };
-
-  const applied = () => {
-    return job.applicants.indexOf(PROFILE_STATE._id) !== -1;
-  };
-
-  useEffect(() => {
-    applied();
-    // eslint-disable-next-line
-  }, []);
 
   return (
     <tr>
@@ -44,16 +35,29 @@ const JobRow: React.FC<{
             text={""}
             classname={"details_button"}
           />{" "}
-          <TransformableButtuon
-            originIcon={<BsFileEarmarkArrowUpFill />}
-            targetIcon={<BsFillCheckCircleFill />}
-            originText={"Apply"}
-            targetText={"Applied"}
-            originClassName={"apply_button"}
-            targetClassNeme={"applied_icon"}
-            clickAction={applyToPossition}
-            initialstate={applied()}
-          />
+          {job.applicants.indexOf(PROFILE_STATE._id) !== -1 ? (
+            <Transformablebutton
+              originIcon={<BsFileEarmarkArrowUpFill />}
+              targetIcon={<BsFillCheckCircleFill />}
+              originText={"Apply"}
+              targetText={"Applied"}
+              originClassName={"apply_button"}
+              targetClassNeme={"applied_icon"}
+              clickAction={applyToPossition}
+              initialstate={true}
+            />
+          ) : (
+            <Transformablebutton
+              originIcon={<BsFileEarmarkArrowUpFill />}
+              targetIcon={<BsFillCheckCircleFill />}
+              originText={"Apply"}
+              targetText={"Applied"}
+              originClassName={"apply_button"}
+              targetClassNeme={"applied_icon"}
+              clickAction={applyToPossition}
+              initialstate={false}
+            />
+          )}
         </td>
       )}
     </tr>

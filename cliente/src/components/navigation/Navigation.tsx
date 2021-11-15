@@ -4,7 +4,7 @@ import { SearchBar, Logo } from "../";
 import AccountMenu from "../dropdown/AccountMenu";
 
 const Navigation: React.FC = () => {
-  const { PROFILE_STATE, PROFILE_API, AUTH_STATE } = useContext(State);
+  const { PROFILE_STATE, AUTH_STATE } = useContext(State);
   return (
     <nav>
       <div id="acction-bar">

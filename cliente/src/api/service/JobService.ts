@@ -13,6 +13,10 @@ class JobService {
     const response = await Api.updateJob(Job);
     return response;
   };
+  public deactivateJobPost = async (Job: IJobPost) => {
+    const response = await Api.deactivateJobPost(Job);
+    return response;
+  };
   public deleteJob = async (Job: IJobPost) => {
     const response = await Api.deleteJob(Job);
     return response;

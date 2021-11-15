@@ -1,4 +1,4 @@
-import React, { useContext, useEffect } from "react";
+import React, { useContext } from "react";
 import { State } from "../state/State";
 import {
   CategoryList,
@@ -13,17 +13,9 @@ const Home: React.FC = () => {
     JOBS_POST_FORM_STATE,
     JOBS_STATE,
     DISPLAY_PANNEL_STATE,
-    PROFILE_API,
-    AUTH_STATE,
   } = useContext(State);
 
   const { AuthFormState } = AUTH_FORM_STATE;
-  useEffect(() => {
-    if (AUTH_STATE.Auth) {
-      PROFILE_API.getProfile();
-    }
-    // eslint-disable-next-line
-  }, [AUTH_STATE.Auth]);
 
   return (
     <div id="home-page" className={"page"}>

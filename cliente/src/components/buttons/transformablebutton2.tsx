@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useState } from "react";
 import { IconType } from "react-icons";
 
 interface button {
@@ -14,7 +14,7 @@ interface button {
   ) => void;
 }
 
-const TransformableButtuon: React.FC<button> = ({
+const TransformableButtuon2: React.FC<button> = ({
   originText,
   targetText,
   originClassName,
@@ -35,10 +35,6 @@ const TransformableButtuon: React.FC<button> = ({
     setactive(true);
   };
 
-  useEffect(() => {
-    setactive(initialstate);
-  }, [initialstate]);
-
   return active ? (
     <button className={targetClassNeme}>
       {targetIcon} {targetText}
@@ -50,4 +46,4 @@ const TransformableButtuon: React.FC<button> = ({
   );
 };
 
-export default TransformableButtuon;
+export default TransformableButtuon2;

@@ -13,7 +13,7 @@ class JobsController {
       JobService.postJobs
     );
     this.router.put(
-      "/",
+      "/:id",
       AuthValidator.isAuth,
       this.updateJob,
       JobService.updateJob

@@ -5,7 +5,7 @@ export default interface IJob {
   type: string;
   logo: string;
   URL: string;
-  status: string;
+  status: boolean;
   position: string;
   location: string;
   category: string;

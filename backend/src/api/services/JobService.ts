@@ -2,6 +2,7 @@ const dotenv = require("dotenv");
 dotenv.config();
 import { NextFunction, Request, Response } from "express";
 import { JobModel, UserModel } from "../models";
+import { IClasifyedJobs, IJob } from "../interfaces";
 import mongooseJobObjecStructure from "../../config/constants/mongooseJobAggregateStructure";
 import alfabethicSort from "../../helpers/AlphebeticSortFunction";
 
@@ -10,6 +11,7 @@ class JobService {
 
   public async getJobs(req: Request, res: Response, next: NextFunction) {
     let jobs = await JobModel.aggregate([
+      { $match: { status: true } },
       {
         $group: {
           _id: "$category",
@@ -20,6 +22,7 @@ class JobService {
         },
       },
     ]);
+
     res.status(200).json({
       success: true,
       message: "",
@@ -53,7 +56,9 @@ class JobService {
     let options = { upsert: true, new: true };
     try {
       let result = await JobModel.findOneAndUpdate(id, change, options).exec();
-      res.status(200).json({ Message: "job Updated", job: result });
+      res
+        .status(200)
+        .json({ success: true, Message: "job Updated", job: result });
     } catch (err) {
       next(err);
     }
@@ -76,12 +81,18 @@ class JobService {
       let jobId = { _id: req.params.id };
       await JobModel.findOneAndUpdate(jobId, JobChange, options).exec();
 
+      //get the list of posted jobs:
+      const PostedJobs = await JobModel.find({
+        ownerId: req.body.validatedUser.id,
+      });
+
       //sent succesfull response to theuser
       res.status(200).json({
         success: true,
         error: "",
         message: "Your application has been submited",
         profile: updateduserProfile,
+        PostedJobs,
       });
     } catch (err) {
       next(err);

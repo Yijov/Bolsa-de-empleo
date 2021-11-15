@@ -1,12 +1,31 @@
-import React from "react";
+import React, { useContext } from "react";
+import { State } from "../../state/State";
 import { IJobPost } from "../../interfaces";
-import { TransformableButtuon } from "..";
+import { Transformablebutton2 } from "..";
 import { MdOutlineBlock } from "react-icons/md";
+import { toast } from "react-toastify";
 
 const Row: React.FC<{ job: IJobPost }> = ({ job }) => {
-  console.log(job);
+  //bringing the jobs api form the state
+  const { JOBS_API, PROFILE_API } = useContext(State);
 
-  const deactivatePosition = () => {};
+  //deactivate the post
+  const deactivatePosition = async (
+    event: React.MouseEvent<HTMLButtonElement, MouseEvent>
+  ) => {
+    if (window.confirm("¿Are you sure you wish to stop this publication?")) {
+      const deactivated = await JOBS_API.deactivateJobPost(job);
+      if (deactivated) {
+        await PROFILE_API.getProfile();
+        toast.info("your post has been deactivated");
+      } else {
+        toast.info(
+          "we cannot complete this action at the moment, pleease try again later"
+        );
+      }
+    }
+  };
+
   return (
     <tr>
       <td>{job.position}</td>
@@ -15,7 +34,7 @@ const Row: React.FC<{ job: IJobPost }> = ({ job }) => {
       <td>{job.category}</td>
       <td>{job.applicants.length}</td>
       <td>
-        <TransformableButtuon
+        <Transformablebutton2
           originText={"Expire"}
           targetText={"Inactive"}
           originClassName={"activated"}
@@ -33,9 +52,6 @@ const Row: React.FC<{ job: IJobPost }> = ({ job }) => {
 const PostedTable: React.FC<{ Jobs: IJobPost[] }> = ({ Jobs }) => {
   return (
     <table>
-      <caption>
-        <h2>Positions Posted</h2>
-      </caption>
       <thead>
         <tr>
           <th>Position</th>

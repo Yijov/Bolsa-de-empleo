@@ -1,4 +1,4 @@
-import React, { createContext } from "react";
+import React, { createContext, useEffect } from "react";
 import AuthState from "./substates/Auth/AuthState";
 import ProfileState from "./substates/Profile/ProfileState";
 import { GeneralInitialState, TState } from "./stateconfig/generalStateConfig";
@@ -17,6 +17,13 @@ export function StateProvider(props: any) {
     DISPLAY_PANNEL_STATE,
     DISPLAY_PANNEL_API,
   } = JobsState();
+
+  useEffect(() => {
+    if (AUTH_STATE.Auth) {
+      PROFILE_API.getProfile();
+    }
+    // eslint-disable-next-line
+  }, [AUTH_STATE.Auth]);
 
   return (
     <State.Provider

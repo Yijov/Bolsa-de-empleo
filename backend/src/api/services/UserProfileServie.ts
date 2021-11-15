@@ -11,9 +11,6 @@ class UserProfileServie {
       const PostedJobs = await JobModel.find({
         ownerId: req.body.validatedUser.id,
       });
-      const AppliedJobs = await JobModel.find({
-        ownerId: req.body.validatedUser.id,
-      });
 
       res.status(200).json({
         success: true,

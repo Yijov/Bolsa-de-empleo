@@ -20,7 +20,7 @@
 
 #acction-bar {
   padding: 1rem;
-  width: 70%;
+  width: 80%;
   height: 4rem;
   display: -webkit-box;
   display: -ms-flexbox;
@@ -239,9 +239,8 @@
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
-  border: 1px solid black;
-  height: 80vh;
-  width: 70%;
+  min-height: 80vh;
+  width: 80%;
   margin: auto;
   margin-bottom: 1rem;
   font-family: Helvetica, sans-serif;
@@ -249,6 +248,7 @@
 
 #profile-page #profile-info-container {
   height: 100%;
+  min-height: 80vh;
   width: 30%;
   background-color: #33cccc;
   color: white;
@@ -339,8 +339,9 @@
   -webkit-box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
           box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
   background-color: whitesmoke;
-  height: 100%;
+  height: 43%;
   color: black;
+  overflow: auto;
 }
 
 #profile-page #positions-container #positions-applyed table,
@@ -348,7 +349,34 @@
   font-family: arial, sans-serif;
   border-collapse: collapse;
   width: 100%;
-  margin-bottom: 4rem;
+}
+
+#profile-page #positions-container #positions-applyed table .activated,
+#profile-page #positions-container #positions-applyed table .deactivated,
+#profile-page #positions-container #positions-posted table .activated,
+#profile-page #positions-container #positions-posted table .deactivated {
+  width: 6rem;
+  height: 1.9rem;
+}
+
+#profile-page #positions-container #positions-applyed table .activated,
+#profile-page #positions-container #positions-posted table .activated {
+  background-color: #1a1aff;
+  color: white;
+  border: none;
+  border-radius: 2px;
+  padding: 0.4rem;
+  cursor: pointer;
+}
+
+#profile-page #positions-container #positions-applyed table .deactivated,
+#profile-page #positions-container #positions-posted table .deactivated {
+  background-color: #0f3d3d;
+  color: white;
+  border: none;
+  border-radius: 2px;
+  padding: 0.4rem;
+  cursor: pointer;
 }
 
 #profile-page #positions-container #positions-applyed table caption,

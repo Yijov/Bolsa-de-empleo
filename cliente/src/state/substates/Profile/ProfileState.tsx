@@ -21,7 +21,7 @@ const ProfileState = () => {
         toast.error(response.error);
       }
     } catch (error: any) {
-      toast.error("Unable to connect to Database");
+      toast.error("Unable to connect to database");
     }
   };
 
@@ -30,7 +30,10 @@ const ProfileState = () => {
     const response = await ProfileController.updateProfile(profile);
     if (response.success) {
       toast.success(response.message);
-      setProfile(response.profile);
+      setProfile({
+        ...response.profile,
+        PostedJobs: response.PostedJobs,
+      });
     } else {
       toast.error(response.error);
     }

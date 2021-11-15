@@ -1,4 +1,4 @@
-import { string } from "joi";
+import { boolean, string } from "joi";
 import { Schema, model, Model } from "mongoose";
 
 import { IJob } from "../interfaces";
@@ -13,9 +13,10 @@ const JobSchema: Schema = new Schema<IJob>(
     position: String,
     location: String,
     status: {
-      type: String,
-      default: "active",
+      type: Boolean,
+      default: true,
     },
+
     category: String,
     description: String,
     email: String,

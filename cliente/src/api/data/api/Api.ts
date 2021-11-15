@@ -88,10 +88,24 @@ class Api extends BackendConnection {
 
   public updateJob = (updatedJob: IJobPost) => {
     const solution: Promise<IJobPost | IAPIResponse> = axios
-      .put<IJobPost>(this.routes.Jobs + updatedJob._id, {
+      .put<IJobPost>(this.routes.Jobs + "/" + updatedJob._id, {
         ...updatedJob,
       })
       .then((response: AxiosResponse<IJobPost>) => {
+        return response.data;
+      })
+      .catch((error: AxiosError<IAPIResponse>) => {
+        return error.response?.data!!;
+      });
+    return solution;
+  };
+
+  public deactivateJobPost = (JobToDeactivate: IJobPost) => {
+    const solution: Promise<IAPIResponse> = axios
+      .put<IAPIResponse>(`${this.routes.Jobs}/${JobToDeactivate._id}`, {
+        status: false,
+      })
+      .then((response: AxiosResponse<IAPIResponse>) => {
         return response.data;
       })
       .catch((error: AxiosError<IAPIResponse>) => {

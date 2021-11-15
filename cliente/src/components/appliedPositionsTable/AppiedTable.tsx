@@ -7,7 +7,7 @@ const Row: React.FC<{ job: IJobPost }> = ({ job }) => {
       <td>{job.position}</td>
       <td>{job.company}</td>
       <td>{new Date(job.createdAt).toLocaleDateString()}</td>
-      <td>{job.status}</td>
+      <td>{(job.status && "Active") || "Closed"}</td>
     </tr>
   );
 };
@@ -15,9 +15,6 @@ const Row: React.FC<{ job: IJobPost }> = ({ job }) => {
 const AppiedTable: React.FC<{ Jobs: IJobPost[] }> = ({ Jobs }) => {
   return (
     <table>
-      <caption>
-        <h2>Positions Applied</h2>
-      </caption>
       <thead>
         <tr>
           <th>Position</th>
@@ -28,7 +25,7 @@ const AppiedTable: React.FC<{ Jobs: IJobPost[] }> = ({ Jobs }) => {
       </thead>
       <tbody>
         {Jobs?.map((job) => (
-          <Row job={job} key={job._id} />
+          <Row job={job} key={Math.random()} />
         ))}
       </tbody>
     </table>
